@@ -2,6 +2,8 @@ use std::io::{self, Write}; // Used for basic input output (e.g. reading user in
 use std::fs; // Filesystem for creating directories
 use std::path::Path; // For working with filesystem paths
 
+use super::deps;
+
 pub fn run() { // Public function
     // Empty, mutable strings to store user input
     let mut project_type = String::new();
@@ -17,6 +19,31 @@ pub fn run() { // Public function
 
     let project_type = project_type.trim(); // Trim to make sure there are no whitespaces
     let project_name = project_name.trim();
+
+    // Check for dependencies
+    let deps_ok = match project_type {
+        "react" => {
+            if !deps::check_node() || !deps::check_npm() {
+                eprintln!("Error: Node.js and npm are required for React projects.");
+                false
+            } else { true }
+        }
+        "python" => {
+            if !deps::check_python() {
+                eprintln!("Error: Python is required for Python projects.");
+                false
+            } else { true }
+        }
+        _ => { // Prompt the user if they enter an unsupported dependency type
+            eprintln!("Error: Unsupported project type '{}'.", project_type);
+            false
+        }
+    };
+
+    if !deps_ok { // Prompt the user if there are missing dependencies
+        eprintln!("Project creation canceled due to missing dependencies.");
+        return;
+    };
 
     // Check for existing folder
     if Path::new(project_name).exists() {
