@@ -1,13 +1,17 @@
-use clap::Parser;
+mod commands;
 
-/// Simple program to greet someone
-#[derive(Parser)]
-struct Args {
-    /// Name of the person to greet
-    name: String,
-}
+use std::env;
 
 fn main() {
-    let args = Args::parse();
-    println!("Hello, {}!", args.name);
+    let args: Vec<String> = env::args().collect();
+
+    if args.len() < 2 {
+        eprintln!("Usage: devbuddy <command>");
+        return;
+    }
+
+    match args[1].as_str() {
+        "init" => commands::init::run(),
+        _ => eprintln!("Unknown command: {}", args[1]),
+    }
 }
