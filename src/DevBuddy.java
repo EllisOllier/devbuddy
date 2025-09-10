@@ -5,8 +5,7 @@
 public class DevBuddy {
     public static void main(String[] args) {
         if(args.length == 0){
-            System.out.println("DevBuddy CLI - No command provided");
-            System.out.println("Usage: java DevBuddy <command>");
+            System.out.println("Usage: java DevBuddy <command> [subcommand]");
             return;
         }
 
@@ -14,13 +13,38 @@ public class DevBuddy {
 
         switch(command){
             case "init":
-                System.out.println("DevBuddy initialized");
+                handleInit(args);
                 break;
             case "help":
-                System.out.println("Commands:\ninit\nhelp");
+                handleHelp();
                 break;
                 default:
                     System.out.println("Unknown command: " + command);
         }
+    }
+
+    private static void handleInit(String[] args){
+        if(args.length < 3){
+            System.out.println("Usage: java DevBuddy init <project-type> <project-name>");
+            return;
+        }
+
+        String projectType = args[1];
+        String projectName = args[2];
+
+        switch(projectType) {
+            case "python":
+                System.out.println("Initialising Python project: " + projectName);
+                break;
+            case "react":
+                System.out.println("Initialising React project: " + projectName);
+                break;
+                default:
+                System.out.println("Unknown project type: " + projectType);
+        }
+    }
+
+    private static void handleHelp(){
+        System.out.println("Commands:\ninit\nhelp");
     }
 }
