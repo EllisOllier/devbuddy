@@ -1,7 +1,7 @@
 # DevBuddy CLI
 
 ## Commands
-- DevBuddy init <projectType> <projectName>
+- DevBuddy init \<projectType\> \<projectName\>
 - DevBuddy help
 
 ## Supported Project Types
