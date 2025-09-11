@@ -1,11 +1,13 @@
 // Steps to run in dev env
 // 1. javac src/DevBuddy.java -d out
 // 2. java -cp out DevBuddy <command>
-import java.nio.file.*;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class DevBuddy {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         if(args.length == 0){
             System.out.println("Usage: java DevBuddy <command> [subcommand]");
             return;
@@ -25,7 +27,7 @@ public class DevBuddy {
         }
     }
 
-    private static void handleInit(String[] args){
+    private static void handleInit(String[] args) throws IOException {
         if(args.length < 3){
             System.out.println("Usage: java DevBuddy init <project-type> <project-name>");
             return;
@@ -43,6 +45,7 @@ public class DevBuddy {
                 break;
             case "java":
                 System.out.println("Initialising Java project: " + projectName);
+                createJavaProject(args);
                 break;
                 default:
                 System.out.println("Unknown project type: " + projectType);
@@ -53,7 +56,7 @@ public class DevBuddy {
         System.out.println("Commands:\ninit\nhelp");
     }
 
-    private void createReactProject(String[] args){
+    private static void createReactProject(String[] args){
         String projectName = args[2];
 
         // Check that node is installed with "node -v"
@@ -62,7 +65,7 @@ public class DevBuddy {
         // Alert the user of any errors
     }
 
-    private void createPythonProject(String[] args){
+    private static void createPythonProject(String[] args){
         String projectName = args[2];
 
         // Check for python version (check how)
@@ -71,13 +74,28 @@ public class DevBuddy {
         // add readme.md to directory (could ask question if user wants it)
     }
 
-    private void createJavaProject(String[] args){
+    private static void createJavaProject(String[] args) throws IOException {
         String projectName = args[2];
 
-        // check jvm is installed (i think)
-        // create directory with <projectName>
-        // create src directory in root directory
-        // add Main.java to src directory
-        // add readme.md to directory
+        // TODO: Check java prerequisites
+
+        // Create root project folder with projectName at the users current directory (user.dir)
+        // Specify root path for project
+        Path root = Paths.get(System.getProperty("user.dir"), projectName);
+        // Create root path
+        Files.createDirectories(root);
+        // Create /src directory in root directory
+        // Specify directory being created in root
+        Path srcDir = root.resolve("src");
+        // Create src directory
+        Files.createDirectories(srcDir);
+        // Add Main.java to src
+        Path mainFile = srcDir.resolve("Main.java");
+        // Add Main class to Main.java
+        Files.writeString(mainFile, "public class Main { }");
+        // Add readme.md to directory
+        Path readmeFile = root.resolve("README.md");
+        // Add default text to readme.md
+        Files.writeString(readmeFile, "Add information about Java project");
     }
 }
