@@ -1,8 +1,8 @@
 # DevBuddy CLI
 
 ## Commands
-DevBuddy init <projectType> <projectName>
-DevBuddy help
+- DevBuddy init <projectType> <projectName>
+- DevBuddy help
 
 ## Supported Project Types
 - react
