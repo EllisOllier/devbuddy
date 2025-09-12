@@ -10,10 +10,12 @@
 - java
 
 ## Running project from source code
-- Build the project: javac -d out src/DevBuddy.java
-- Run: java -cp \<PathToOut\> DevBuddy init java MyApp
+- Build the project: `javac -d out src/DevBuddy.java`
+- Run: `java -cp <PathToOut> DevBuddy <command> <subcommands>`
 
 ### Example
-- javac -d out src/DevBuddy.java
-- cd Desktop
-- java -cp /Users/NAME/IdeaProjects/devbuddy/out DevBuddy init java MyApp     
+```
+javac -d out src/DevBuddy.java
+cd Desktop
+java -cp /Users/NAME/IdeaProjects/devbuddy/out DevBuddy init java MyApp     
+```
