@@ -77,8 +77,6 @@ public class DevBuddy {
     private static void createJavaProject(String[] args) throws IOException {
         String projectName = args[2];
 
-        // TODO: Check java prerequisites
-
         // Create root project folder with projectName at the users current directory (user.dir)
         // Specify root path for project
         Path root = Paths.get(System.getProperty("user.dir"), projectName);
