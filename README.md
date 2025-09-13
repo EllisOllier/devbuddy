@@ -14,7 +14,7 @@
 - Build the project: `javac -d out src/*.java`
 - Run: `java -cp <PathToOut> DevBuddy <command> <subcommands>`
 
-### Building Project
+### Building Project (Prerequisite)
 ```
 cd /Users/ScottTenorman/IdeaProjects/DevBuddy
 javac -d out src/*.java
