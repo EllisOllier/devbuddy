@@ -13,6 +13,8 @@ public class DevBuddy {
             case "init":
                 Commands.handleInit(args);
                 break;
+            case "repo":
+                Commands.handleRepo(args);
             case "help":
                 Commands.handleHelp();
                 break;
