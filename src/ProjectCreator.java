@@ -34,7 +34,7 @@ public class ProjectCreator {
                 System.out.println("node and npx are required to create a react project!");
             }
         } catch(Exception e){
-            System.out.println("Failed to created react project: " + e);
+            System.out.println("Failed to created react project: " + e.getMessage());
         }
     }
 
@@ -58,7 +58,7 @@ public class ProjectCreator {
 
             System.out.println("Successfully created python project: " + args);
         } catch(IOException e) {
-            System.out.println("Failed to created python project: " + e);
+            System.out.println("Failed to created python project: " + e.getMessage());
         }
     }
 
@@ -85,7 +85,7 @@ public class ProjectCreator {
 
             System.out.println("Successfully created java project: " + args);
         } catch(IOException e) {
-            System.out.println("Failed to created java project: " + e);
+            System.out.println("Failed to created java project: " + e.getMessage());
         }
     }
 }
