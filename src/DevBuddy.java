@@ -15,6 +15,7 @@ public class DevBuddy {
                 break;
             case "repo":
                 Commands.handleRepo(args);
+                break;
             case "help":
                 Commands.handleHelp();
                 break;
