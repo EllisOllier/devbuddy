@@ -2,6 +2,7 @@
 
 ## Commands
 - DevBuddy init \<projectType\> \<projectName\>
+- DevBuddy repo init
 - DevBuddy help
 
 ## Supported Project Types
